@@ -127,10 +127,9 @@ export const menu: MenuItem[] = [
     spiceLevel: 3,
     image: {
       src: "/images/chicken-sukka",
-      alt: "Mangalorean dry Chicken Sukka — bite-sized chicken in a thick roasted coconut masala with curry leaves, on a steel plate",
+      alt: "Mangalorean dry Chicken Sukka — bite-sized chicken in a dark roasted masala with curry leaves, served in a brass bowl on a banana leaf",
       brief:
         "Dry, semi-dry sukka: bite-sized chicken, thick dark reddish-brown roasted masala, visible roasted grated coconut, curry leaves, caramelised onions, very little gravy. Brass bowl or banana-leaf-lined plate.",
-      credit: { author: "Nishalns", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Kori_sukka.jpg" },
     },
   },
   {
@@ -144,10 +143,9 @@ export const menu: MenuItem[] = [
     spiceLevel: 2,
     image: {
       src: "/images/kori-rotti",
-      alt: "Crisp, paper-thin kori rotti served with bowls of coastal chicken gravy",
+      alt: "Crisp, paper-thin kori rotti beside a bowl of rich coastal chicken gravy",
       brief:
         "Brass bowl of rich reddish-brown coastal chicken gravy, with separate crisp, thin kori rotti wafers alongside. Banana-leaf presentation.",
-      credit: { author: "Zara hussain khan", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Kori_roti_Udupi.jpg" },
     },
   },
   {
@@ -160,10 +158,9 @@ export const menu: MenuItem[] = [
     spiceLevel: 1,
     image: {
       src: "/images/mushroom-biryani",
-      alt: "Mushroom biryani — long-grain basmati rice with mushrooms, fried onions, coriander and mint",
+      alt: "Mushroom biryani in a copper handi — long-grain basmati with mushrooms, fried onions and herbs, on a banana leaf",
       brief:
         "Mushroom biryani in a brass handi: visible mushroom pieces, long-grain basmati, fried onions, coriander and mint on top.",
-      credit: { author: "Yakshitha", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Mushroom_Biriyani.jpg" },
     },
   },
 ];
