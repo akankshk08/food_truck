@@ -127,9 +127,10 @@ export const menu: MenuItem[] = [
     spiceLevel: 3,
     image: {
       src: "/images/chicken-sukka",
-      alt: "Mangalorean dry Chicken Sukka — bite-sized chicken in a thick, dark roasted masala with grated coconut and curry leaves, served in a brass bowl",
+      alt: "Mangalorean dry Chicken Sukka — bite-sized chicken in a thick roasted coconut masala with curry leaves, on a steel plate",
       brief:
         "Dry, semi-dry sukka: bite-sized chicken, thick dark reddish-brown roasted masala, visible roasted grated coconut, curry leaves, caramelised onions, very little gravy. Brass bowl or banana-leaf-lined plate.",
+      credit: { author: "Nishalns", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Kori_sukka.jpg" },
     },
   },
   {
@@ -143,9 +144,10 @@ export const menu: MenuItem[] = [
     spiceLevel: 2,
     image: {
       src: "/images/kori-rotti",
-      alt: "Rich reddish-brown coastal chicken gravy in a brass bowl beside crisp, paper-thin kori rotti on a banana leaf",
+      alt: "Crisp, paper-thin kori rotti served with bowls of coastal chicken gravy",
       brief:
         "Brass bowl of rich reddish-brown coastal chicken gravy, with separate crisp, thin kori rotti wafers alongside. Banana-leaf presentation.",
+      credit: { author: "Zara hussain khan", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Kori_roti_Udupi.jpg" },
     },
   },
   {
@@ -158,9 +160,10 @@ export const menu: MenuItem[] = [
     spiceLevel: 1,
     image: {
       src: "/images/mushroom-biryani",
-      alt: "Mushroom biryani in a brass handi — long-grain basmati with mushroom pieces, fried onions, coriander and mint",
+      alt: "Mushroom biryani — long-grain basmati rice with mushrooms, fried onions, coriander and mint",
       brief:
         "Mushroom biryani in a brass handi: visible mushroom pieces, long-grain basmati, fried onions, coriander and mint on top.",
+      credit: { author: "Yakshitha", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Mushroom_Biriyani.jpg" },
     },
   },
 ];
@@ -176,18 +179,21 @@ export const images = {
   },
   storyMain: {
     src: "/images/story-cooking",
-    alt: "Masala being roasted in a heavy iron kadai over an open flame",
+    alt: "Chicken sukka cooking in a pan, coated in roasted coconut and red chilli masala",
     brief: "Portrait: hands roasting masala in an iron kadai over flame, steam and warm light.",
+    credit: { author: "Denzil Sebastian", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Chicken_Sukka_Mangalorean_Cusine.JPG" },
   },
   storySpices: {
     src: "/images/story-spices",
-    alt: "Byadgi chillies, coriander seeds, peppercorns and fresh grated coconut laid out for grinding",
+    alt: "Open sacks of whole spices — star anise, dried chillies, cardamom and seeds — at an Indian market",
     brief: "Overhead: Byadgi chillies, coriander, pepper, cumin and fresh grated coconut on stone or brass.",
+    credit: { author: "judepics", license: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Spices_in_an_Indian_market.jpg" },
   },
   storyCoconut: {
     src: "/images/story-coconut",
-    alt: "Freshly grated coconut and curry leaves beside a traditional grinding stone",
+    alt: "Freshly grated coconut on a brass plate",
     brief: "Close-up: freshly grated coconut and curry leaves next to a traditional grinding stone.",
+    credit: { author: "Biswarup Ganguly", license: "CC BY 3.0", url: "https://commons.wikimedia.org/wiki/File:Grated_Coconut_-_Howrah_2013-10-18_3541.JPG" },
   },
 } satisfies Record<string, SiteImage>;
 
