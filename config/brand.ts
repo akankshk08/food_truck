@@ -176,21 +176,18 @@ export const images = {
   },
   storyMain: {
     src: "/images/story-cooking",
-    alt: "Chicken sukka cooking in a pan, coated in roasted coconut and red chilli masala",
+    alt: "Chicken sukka steaming in an iron kadai, coated in roasted masala with coconut and curry leaves",
     brief: "Portrait: hands roasting masala in an iron kadai over flame, steam and warm light.",
-    credit: { author: "Denzil Sebastian", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Chicken_Sukka_Mangalorean_Cusine.JPG" },
   },
   storySpices: {
     src: "/images/story-spices",
-    alt: "Open sacks of whole spices — star anise, dried chillies, cardamom and seeds — at an Indian market",
+    alt: "Dried red chillies, coriander seeds, black peppercorns and cumin in a stone bowl",
     brief: "Overhead: Byadgi chillies, coriander, pepper, cumin and fresh grated coconut on stone or brass.",
-    credit: { author: "judepics", license: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Spices_in_an_Indian_market.jpg" },
   },
   storyCoconut: {
     src: "/images/story-coconut",
-    alt: "Freshly grated coconut on a brass plate",
+    alt: "Freshly grated coconut beside a halved coconut on a banana leaf",
     brief: "Close-up: freshly grated coconut and curry leaves next to a traditional grinding stone.",
-    credit: { author: "Biswarup Ganguly", license: "CC BY 3.0", url: "https://commons.wikimedia.org/wiki/File:Grated_Coconut_-_Howrah_2013-10-18_3541.JPG" },
   },
 } satisfies Record<string, SiteImage>;
 
