@@ -1,11 +1,22 @@
 import { MapPin } from "lucide-react";
-import { brand, contact, location, menu, navLinks } from "@/config/brand";
+import { brand, contact, images, location, menu, navLinks, type SiteImage } from "@/config/brand";
+import { resolveImage } from "@/lib/images";
 import { instagramLink, whatsappLink } from "@/lib/links";
 import { Logo } from "./ui/Logo";
 import { InstagramIcon, WhatsAppIcon } from "./ui/BrandIcons";
 
+const IMAGE_LABELS: Record<string, string> = {
+  hero: "Hero photo",
+  storyMain: "Kitchen photo",
+  storySpices: "Spices photo",
+  storyCoconut: "Coconut photo",
+};
+
 export default function Footer() {
   const year = new Date().getFullYear();
+  // Credit every freely-licensed photo that is actually shown on the site.
+  const credited = [...menu.map((m) => ({ label: m.name, image: m.image as SiteImage })), ...Object.entries(images).map(([key, image]) => ({ label: IMAGE_LABELS[key] ?? "Photo", image: image as SiteImage }))]
+    .filter(({ image }) => image.credit && resolveImage(image).file);
   const linkClass = "text-sand/70 transition-colors duration-300 hover:text-gold";
 
   return (
@@ -100,6 +111,23 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+        {credited.length > 0 && (
+          <p className="border-t border-bronze/30 py-6 text-center text-[0.7rem] leading-relaxed text-sand/40">
+            Photo credits:{" "}
+            {credited.map(({ label, image }, i) => (
+              <span key={image.src}>
+                {i > 0 && " · "}
+                {label} by{" "}
+                <a href={image.credit!.url} target="_blank" rel="noopener noreferrer" className="underline decoration-sand/20 underline-offset-2 hover:text-gold">
+                  {image.credit!.author}
+                </a>{" "}
+                ({image.credit!.license})
+              </span>
+            ))}
+            . Sample photos from Wikimedia Commons.
+          </p>
+        )}
 
         <div className="flex flex-col items-center justify-between gap-3 border-t border-bronze/30 py-8 text-xs tracking-wide text-sand/50 sm:flex-row">
           <p>

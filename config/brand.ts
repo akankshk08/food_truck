@@ -98,6 +98,18 @@ export type SiteImage = {
   src: string;
   alt: string;
   brief: string;
+  /**
+   * Credit for photos used under a free licence (e.g. from Wikimedia Commons).
+   * Shown in the footer. Remove it when you replace the photo with your own.
+   */
+  credit?: PhotoCredit;
+};
+
+export type PhotoCredit = {
+  author: string;
+  license: string;
+  /** Link to the photo's source page. */
+  url: string;
 };
 
 export const currency = "₹";
