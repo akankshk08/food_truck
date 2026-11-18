@@ -11,7 +11,8 @@
     "db:setup": "tsx scripts/db-setup.ts",
     "admin:create": "tsx scripts/create-admin.ts",
     "test": "tsx --test tests/unit.test.ts",
-    "test:api": "node scripts/run-api-tests.mjs"
+    "test:api": "node scripts/run-api-tests.mjs",
+    "vercel-build": "tsx scripts/db-setup.ts && next build"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",

@@ -30,13 +30,19 @@ On the menu, customers pick a portion and "Ask on WhatsApp" sends e.g.
 
 There is no public sign-up. To add another admin or reset a password, run `npm run admin:create -- email@example.com` again.
 
-## Deploying (Vercel + Turso)
+## Deploying (Vercel + Turso) — all in the browser
 
-1. Create a free database at turso.tech → copy its URL (`libsql://…`) and an auth token.
-2. In Vercel → Project → Settings → Environment Variables, set `DATABASE_URL`, `DATABASE_AUTH_TOKEN`, `NEXT_PUBLIC_SITE_URL`.
-3. In Vercel → Storage, create a **Blob** store and connect it to the project (this sets `BLOB_READ_WRITE_TOKEN`; needed for photo uploads because Vercel's disk is read-only).
-4. From your computer, with those same `DATABASE_URL`/`DATABASE_AUTH_TOKEN` values in `.env.local`, run `npm run db:setup` and `npm run admin:create -- you@example.com` once.
-5. Turn on Turso's backups (point-in-time recovery) for your database.
+1. **Turso** (turso.tech): create a database (pick the Mumbai region), then copy its **URL** (`libsql://…`) and create a **token**.
+2. **Vercel** (vercel.com): Add New → Project → import `akankshk08/food_truck`. Before clicking Deploy, open *Environment Variables* and add:
+   - `DATABASE_URL` = the Turso URL
+   - `DATABASE_AUTH_TOKEN` = the Turso token
+   - `ADMIN_EMAIL` = the email you'll sign in with
+   - `ADMIN_PASSWORD` = a strong password (10+ characters)
+3. Click **Deploy**. Each build sets up/updates the database automatically (`vercel-build` script); the first one also creates your admin login.
+4. **Photos:** Vercel → your project → Storage → Create → **Blob** (public) → connect it to the project, then Redeploy. This sets `BLOB_READ_WRITE_TOKEN`.
+5. After your first sign-in at `https://<your-project>.vercel.app/admin`, delete `ADMIN_PASSWORD` (and `ADMIN_EMAIL`) from the environment variables. They are only used when no admin exists yet.
+6. Set `NEXT_PUBLIC_SITE_URL` to your site's address (e.g. `https://<your-project>.vercel.app`) and redeploy, so share links and SEO use the right address.
+7. In Turso, check that backups / point-in-time recovery are on for your database.
 
 Other hosts work too: any Node.js server with `npm run build && npm start`. Without Blob, photos are saved in `UPLOAD_DIR` (default `./data/uploads`) — back that folder up along with the database.
 

@@ -6,7 +6,11 @@ import type { Config } from "@libsql/client";
 export function connectionOptions(url: string, authToken?: string): Config {
   if (url.startsWith("file:")) {
     const file = url.slice("file:".length);
-    fs.mkdirSync(path.dirname(path.resolve(file)), { recursive: true });
+    try {
+      fs.mkdirSync(path.dirname(path.resolve(file)), { recursive: true });
+    } catch {
+      // Read-only disk (e.g. Vercel without DATABASE_URL set): queries will fail and pages show their fallbacks.
+    }
     return { url };
   }
   return { url, authToken };

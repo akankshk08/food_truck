@@ -14,6 +14,7 @@ import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/libsql";
 import { migrate } from "drizzle-orm/libsql/migrator";
 import { menu } from "../config/brand";
+import { hashPassword } from "../lib/auth/password";
 import { connectionOptions } from "../lib/db/connection";
 import * as schema from "../lib/db/schema";
 import { slugify } from "../lib/slug";
@@ -37,12 +38,17 @@ function findImage(src: string): string | null {
 }
 
 async function main() {
+  if (process.env.VERCEL && !process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL is not set in Vercel → Settings → Environment Variables. Add your Turso database URL and redeploy.");
+  }
   const url = process.env.DATABASE_URL ?? "file:./data/app.db";
   const client = createClient(connectionOptions(url, process.env.DATABASE_AUTH_TOKEN));
   const db = drizzle(client, { schema });
 
   console.log(`Applying migrations to ${url.startsWith("file:") ? url : url.replace(/\/\/.*@/, "//***@")} …`);
   await migrate(db, { migrationsFolder: path.join(process.cwd(), "drizzle") });
+
+  await createFirstAdmin(db);
 
   const seeded = await db.select().from(schema.appMeta).where(eq(schema.appMeta.key, SEED_FLAG));
   if (seeded.length > 0) {
@@ -91,6 +97,23 @@ async function main() {
 
   console.log("Database ready.");
   client.close();
+}
+
+/**
+ * For browser-only deployments: if no admin exists yet and ADMIN_EMAIL + ADMIN_PASSWORD are set
+ * (e.g. in Vercel's environment variables), create that first admin. Never changes an existing admin.
+ */
+async function createFirstAdmin(db: ReturnType<typeof drizzle<typeof schema>>) {
+  const email = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+  const password = process.env.ADMIN_PASSWORD;
+  if (!email || !password) return;
+  const existing = await db.select({ id: schema.admins.id }).from(schema.admins).limit(1);
+  if (existing.length) {
+    console.log("An admin already exists — ADMIN_EMAIL/ADMIN_PASSWORD ignored. You can remove them from your settings.");
+    return;
+  }
+  await db.insert(schema.admins).values({ email, passwordHash: await hashPassword(password) });
+  console.log(`First admin created for ${email}. Remove ADMIN_PASSWORD from your settings now.`);
 }
 
 main().catch((err) => {
