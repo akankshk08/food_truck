@@ -17,6 +17,7 @@ const env = {
   DATABASE_URL: `file:${path.join(dir, "test.db")}`,
   DATABASE_AUTH_TOKEN: "",
   BLOB_READ_WRITE_TOKEN: "",
+  BLOB_STORE_ID: "",
   UPLOAD_DIR: path.join(dir, "uploads"),
   ADMIN_PASSWORD: "test-password-" + Math.random().toString(36).slice(2),
   TEST_ADMIN_EMAIL: "tester@example.com",

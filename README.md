@@ -39,7 +39,7 @@ There is no public sign-up. To add another admin or reset a password, run `npm r
    - `ADMIN_EMAIL` = the email you'll sign in with
    - `ADMIN_PASSWORD` = a strong password (10+ characters)
 3. Click **Deploy**. Each build sets up/updates the database automatically (`vercel-build` script); the first one also creates your admin login.
-4. **Photos:** Vercel → your project → Storage → Create → **Blob** (public) → connect it to the project, then Redeploy. This sets `BLOB_READ_WRITE_TOKEN`.
+4. **Photos:** Vercel → your project → Storage → Create → **Blob** (public) → connect it to the project, then Redeploy. This sets `BLOB_STORE_ID` (or `BLOB_READ_WRITE_TOKEN` on older setups); either works.
 5. After your first sign-in at `https://<your-project>.vercel.app/admin`, delete `ADMIN_PASSWORD` (and `ADMIN_EMAIL`) from the environment variables. They are only used when no admin exists yet.
 6. Set `NEXT_PUBLIC_SITE_URL` to your site's address (e.g. `https://<your-project>.vercel.app`) and redeploy, so share links and SEO use the right address.
 7. In Turso, check that backups / point-in-time recovery are on for your database.

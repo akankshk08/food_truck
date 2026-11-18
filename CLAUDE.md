@@ -9,7 +9,7 @@ Follow the production-web-builder standards. The owner is not a programmer: you 
 - Admin API: `app/api/admin/*`, always wrapped in `adminRoute()` (same-origin check + session check + safe errors).
 - Data access: `lib/data/*.ts`. Validation: `lib/admin/schemas.ts` (zod, `.strict()`, shared by forms and API).
 - Auth: `lib/auth/*` (scrypt hashes, random session tokens stored hashed, httpOnly cookie, DB-backed login rate limit).
-- Photos: `lib/storage.ts` (Vercel Blob if `BLOB_READ_WRITE_TOKEN`, else `UPLOAD_DIR` served by `app/media/[name]`). Uploads are re-encoded by sharp.
+- Photos: `lib/storage.ts` (Vercel Blob if `BLOB_STORE_ID` (OIDC) or `BLOB_READ_WRITE_TOKEN`, else `UPLOAD_DIR` served by `app/media/[name]`). Uploads are re-encoded by sharp.
 - Schema: `lib/db/schema.ts` → `npm run db:generate` → migration in `drizzle/` → `npm run db:setup`.
 
 ## Security (never break)

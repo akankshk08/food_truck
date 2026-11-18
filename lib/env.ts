@@ -11,7 +11,12 @@ const EnvSchema = z.object({
   DATABASE_URL: z.string().min(1).default("file:./data/app.db"),
   /** Required for Turso; not used for a local file. */
   DATABASE_AUTH_TOKEN: z.string().optional(),
-  /** When set, uploaded photos go to Vercel Blob. Otherwise they are saved in UPLOAD_DIR. */
+  /**
+   * Vercel Blob for uploaded photos. Connecting a Blob store to the project sets BLOB_STORE_ID
+   * (newer, uses Vercel's built-in OIDC login) or BLOB_READ_WRITE_TOKEN (older). Either one works.
+   * With neither, photos are saved in UPLOAD_DIR.
+   */
+  BLOB_STORE_ID: z.string().optional(),
   BLOB_READ_WRITE_TOKEN: z.string().optional(),
   UPLOAD_DIR: z.string().min(1).default("./data/uploads"),
 });
