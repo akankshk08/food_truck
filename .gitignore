@@ -4,7 +4,14 @@ out/
 build/
 *.tsbuildinfo
 next-env.d.ts
-.env*.local
 .DS_Store
 npm-debug.log*
 .vercel
+
+# Secrets — never commit. Copy .env.example to .env.local and fill it in.
+.env
+.env.*
+!.env.example
+
+# Local database and uploaded photos (back these up separately)
+/data/

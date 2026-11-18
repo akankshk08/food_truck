@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import { brand, contact, location, menu } from "@/config/brand";
-import { directionsLink } from "@/lib/links";
+import { brand } from "@/config/brand";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -63,28 +62,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FoodEstablishment",
-  name: brand.name,
-  description: brand.description,
-  url: brand.siteUrl,
-  servesCuisine: ["Mangalorean", "Coastal Karnataka", "South Indian"],
-  hasMap: directionsLink(),
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: location.city,
-    addressRegion: location.region,
-    addressCountry: "IN",
-  },
-  ...(contact.phone ? { telephone: contact.phone } : {}),
-  ...(contact.instagramUrl ? { sameAs: [contact.instagramUrl] } : {}),
-  hasMenu: {
-    "@type": "Menu",
-    hasMenuItem: menu.map((m) => ({ "@type": "MenuItem", name: m.name, description: m.description })),
-  },
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-IN" className={`${cormorant.variable} ${inter.variable}`}>
@@ -96,7 +73,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {children}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
     </html>
   );

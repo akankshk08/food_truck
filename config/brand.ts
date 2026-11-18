@@ -2,8 +2,11 @@
  * ─────────────────────────────────────────────────────────────
  *  CENTRAL SITE CONFIGURATION
  *  Everything a non-developer may need to change lives here:
- *  brand name, contact details, location, hours, menu and photos.
+ *  brand name, contact details, location, hours and site photos.
  *  Components read from this file — no need to edit them.
+ *
+ *  The MENU (dishes, photos, portions, prices) is managed in the
+ *  admin dashboard at /admin, not here.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -72,7 +75,12 @@ export const hours: { days: string; time: string }[] = [
   { days: "Saturday – Sunday", time: "To be announced" },
 ];
 
-/* ── Menu ──────────────────────────────────────────────────── */
+/* ── Original menu ─────────────────────────────────────────── */
+/*
+ * The menu is now managed at /admin and stored in the database.
+ * This list was imported once by `npm run db:setup`; editing it has no
+ * effect on the website after that. Kept as the record of the starting menu.
+ */
 
 export type MenuItem = {
   id: string;

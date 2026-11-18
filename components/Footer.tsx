@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
-import { brand, contact, images, location, menu, navLinks, type SiteImage } from "@/config/brand";
+import { brand, contact, images, location, navLinks, type SiteImage } from "@/config/brand";
+import { loadPublishedMenu } from "@/lib/data/menu";
 import { resolveImage } from "@/lib/images";
 import { instagramLink, whatsappLink } from "@/lib/links";
 import { Logo } from "./ui/Logo";
@@ -12,10 +13,11 @@ const IMAGE_LABELS: Record<string, string> = {
   storyCoconut: "Coconut photo",
 };
 
-export default function Footer() {
+export default async function Footer() {
+  const menu = (await loadPublishedMenu()) ?? [];
   const year = new Date().getFullYear();
   // Credit every freely-licensed photo that is actually shown on the site.
-  const credited = [...menu.map((m) => ({ label: m.name, image: m.image as SiteImage })), ...Object.entries(images).map(([key, image]) => ({ label: IMAGE_LABELS[key] ?? "Photo", image: image as SiteImage }))]
+  const credited = [...Object.entries(images).map(([key, image]) => ({ label: IMAGE_LABELS[key] ?? "Photo", image: image as SiteImage }))]
     .filter(({ image }) => image.credit && resolveImage(image).file);
   const linkClass = "text-sand/70 transition-colors duration-300 hover:text-gold";
 
