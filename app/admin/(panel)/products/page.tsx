@@ -7,7 +7,7 @@ import { listCategories } from "@/lib/data/categories";
 import { listProductsForAdmin } from "@/lib/data/products";
 import PageHeader from "@/components/admin/PageHeader";
 import ProductTable from "@/components/admin/ProductTable";
-import { inputClass } from "@/components/admin/ui";
+import { inputClass } from "@/components/admin/styles";
 
 export const metadata: Metadata = { title: "Products" };
 
